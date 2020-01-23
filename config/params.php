@@ -14,4 +14,15 @@ return [
 	'workerConfig' =>[
 		'registerAddress' => '127.0.0.1:1238'
 	],
+    // 固定参数
+    'fixedParameter' => [
+        'goodsVip' => [
+            //商品id
+            'id' => 21,
+            // 单品id
+            34 => strtotime('+ 1 year 1 day') - time(),
+            35 => strtotime('+ 3 month 1 day') - time(),
+            36 => strtotime('+ 1 month 1 day') - time(),
+        ],
+    ]
 ];
