@@ -2,11 +2,8 @@
 
 require __DIR__ . '/bootstrap.php';
 $params = require __DIR__ . '/params.php';
-$db = require __DIR__ . '/db.php';
-$redis = require __DIR__ . '/redis.php';
 $modules = require __DIR__ . '/modules.php';
 $route = require __DIR__ . '/route.php';
-$mongodb = require __DIR__ . '/mongodb.php';
 $translations = require __DIR__ . '/translations.php';
 
 $config = [
@@ -31,10 +28,6 @@ $config = [
 				'application/json' => 'yii\web\JsonParser',
 				'text/json' => 'yii\web\JsonParser',
 			],
-		],
-		'cache' => [
-			'class' => 'yii\caching\FileCache',
-        	'keyPrefix' => 'bricksasp',
 		],
 		'user' => [
 			'identityClass' => 'bricksasp\rbac\models\User',
@@ -69,9 +62,50 @@ $config = [
 				],*/
 			],
 		],
-		'db' => $db,
-		'redis' => $redis,
-		'mongodb' => $mongodb,
+		'db' => [
+			'class' => 'yii\db\Connection',
+
+			// 'username' => 'root',
+			// 'password' => '123456',
+			// 'dsn' => 'mysql:host=127.0.0.1;dbname=basp',
+
+			'username' => 'root',
+			'password' => '649909457@qq.com',
+			'dsn' => 'mysql:host=120.79.223.217;dbname=basp',
+
+			'charset' => 'utf8',
+			'tablePrefix' => 'basp_',
+			// Schema cache options (for production environment)
+			//'enableSchemaCache' => true,
+			//'schemaCacheDuration' => 60,
+			//'schemaCache' => 'cache',
+		],
+		'redis' => [ //token
+            'class' => 'yii\redis\Connection',
+            'hostname' => '120.79.223.217',
+            'port' => 6379,
+            'database' => 0,
+			'password' => '649909457@qq.com',
+        ],
+		'mongodb' => [
+	        'class' => '\yii\mongodb\Connection',
+	        'dsn' => 'mongodb://@localhost:27017/spider',
+	        'options' => [
+	            "username" => "bricksasp",
+	            "password" => "123456"
+	        ]
+	    ],
+		'cache' => [
+			// 'class' => 'yii\caching\FileCache',
+			'class' => 'yii\redis\Cache',
+            'redis' => [
+	            'hostname' => '120.79.223.217',
+	            'port' => 6379,
+	            'database' => 1,
+				'password' => '649909457@qq.com',
+            ],
+        	'keyPrefix' => 'bricksasp',
+		],
 		// 'queue' => [
 		//     'class' => \yii\queue\file\Queue::class,
 		//     'as log' => \yii\queue\LogBehavior::class,
