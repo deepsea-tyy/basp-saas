@@ -96,4 +96,6 @@ public function allowNoLoginAction()
 ## 接口文档
 - http://localhost:8080/site/api-docs
 
+## 后台UI地址
+- https://github.com/deepsea-tyy/basp-admin
 
