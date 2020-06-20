@@ -31,7 +31,20 @@
         "endroid/qr-code": "^3.7",
         "alexandernst/yii2-device-detect": "^0.0.12",
         "ciniran/yii2-excel": "^1.0",
-        "zoujingli/wechat-developer": "^1.2"
+        "zoujingli/wechat-developer": "^1.2",
+        "bricksasp/base": "^1.0",
+        "bricksasp/spu": "^1.0",
+        "bricksasp/worker": "^1.0",
+        "bricksasp/shop": "^1.0",
+        "bricksasp/promotion": "^1.0",
+        "bricksasp/payment": "^1.0",
+        "bricksasp/order": "^1.0",
+        "bricksasp/member": "^1.0",
+        "bricksasp/cms": "^1.0",
+        "bricksasp/concurrent": "^1.0",
+        "php-amqplib/php-amqplib": "^2.11",
+        "ramsey/uuid": "^4.0",
+        "enqueue/amqp-lib": "^0.10.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

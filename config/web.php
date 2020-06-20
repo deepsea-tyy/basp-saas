@@ -65,13 +65,13 @@ $config = [
 		'db' => [
 			'class' => 'yii\db\Connection',
 
-			// 'username' => 'root',
-			// 'password' => '123456',
-			// 'dsn' => 'mysql:host=127.0.0.1;dbname=basp',
-
 			'username' => 'root',
-			'password' => '649909457@qq.com',
-			'dsn' => 'mysql:host=120.79.223.217;dbname=basp',
+			'password' => '123456',
+			'dsn' => 'mysql:host=127.0.0.1;dbname=basp',
+
+			// 'username' => 'root',
+			// 'password' => '649909457@qq.com',
+			// 'dsn' => 'mysql:host=120.79.223.217;dbname=basp',
 
 			'charset' => 'utf8',
 			'tablePrefix' => 'basp_',
@@ -106,17 +106,6 @@ $config = [
             ],
         	'keyPrefix' => 'bricksasp',
 		],
-		// 'queue' => [
-		//     'class' => \yii\queue\file\Queue::class,
-		//     'as log' => \yii\queue\LogBehavior::class,
-		//     // Other driver options
-            // 'class' => \yii\queue\amqp\Queue::class,
-            // 'host' => 'localhost',
-            // 'port' => 5672,
-            // 'user' => 'guest',
-            // 'password' => 'guest',
-            // 'queueName' => 'queue',
-		// ],
 		'urlManager' => $route,
 		'i18n' => $translations,
 		
@@ -144,9 +133,9 @@ if (YII_ENV_DEV) {
 		// uncomment the following to add your IP if you are not connecting from localhost.
 		//'allowedIPs' => ['127.0.0.1', '::1'],
 		'generators' => [
-			// 'job' => [
-			//     'class' => \yii\queue\gii\Generator::class,
-			// ],
+			'job' => [
+			    'class' => \yii\queue\gii\Generator::class,
+			],
 			'mongoDbModel' => [
 				'class' => \yii\mongodb\gii\model\Generator::class,
 			],

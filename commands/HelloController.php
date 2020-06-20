@@ -9,6 +9,9 @@ namespace app\commands;
 
 use yii\console\Controller;
 use yii\console\ExitCode;
+use Yii;
+use app\jobs\TestJob;
+use Interop\Amqp\AmqpTopic;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -28,7 +31,11 @@ class HelloController extends Controller
     public function actionIndex($message = 'hello world')
     {
         echo $message . "\n";
-
+        Yii::$app->queue->push(new TestJob([
+            'param1' => 'param1',
+            'param2' => 'param2',
+            'param3' => 'param3',
+        ]));
         return ExitCode::OK;
     }
 }
