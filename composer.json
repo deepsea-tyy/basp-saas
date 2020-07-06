@@ -44,7 +44,8 @@
         "bricksasp/concurrent": "^1.0",
         "php-amqplib/php-amqplib": "^2.11",
         "ramsey/uuid": "^4.0",
-        "enqueue/amqp-lib": "^0.10.1"
+        "enqueue/amqp-lib": "^0.10.1",
+        "google/protobuf": "^3.12"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
