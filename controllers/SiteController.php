@@ -9,6 +9,8 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Response;
+use yii\httpclient\Client;
+use yii\helpers\Url;
 
 class SiteController extends Controller {
 	/**
@@ -138,5 +140,47 @@ class SiteController extends Controller {
 	 */
 	public function actionAbout() {
 		return $this->render('about');
+	}
+
+	/**
+	 * 下单接口
+	 * @return json
+	 */
+	public function actionCreateOrder()
+	{
+		$baseurl = 'http://8.210.135.205:30103';
+		$AppID = '88894a63b2b24e26803780021889c7a4';
+		$Secret = 'a171b3a88b5d926d4b1bcdbfa3bd3f6c01881da61bccedc267398e92c13e0052';
+		$data = [
+			'Amount'=>'50000',
+			'PayChannel'=>'XY',
+			'ApplyAmt'=>'50000', 
+			'AppID'=>$AppID, 
+			'OrderCode'=>'testa-002' ,
+			'CreateTime'=>'2020-07-07 17:40:00' , 
+			'NotifyUrl' => Url::to('site/callback','http'), 
+			'OutUserId'=>'88888'
+		];
+		$signdata = $data;
+		
+		krsort($signdata);
+		$signdata = array_values($signdata);
+		$signdata[] = $Secret;
+		$data['Sign'] = strtolower(md5(implode('', $signdata)));
+		// var_export($data);exit();
+		$url = $baseurl . '/api/BzApi/OrderCreate';
+
+		$client = new Client();
+		$response = $client->createRequest()
+		    ->setMethod('POST')
+    		->setFormat(Client::FORMAT_JSON)
+		    ->setUrl($url)
+		    ->setData($data)
+		    ->send();
+		if ($response->isOk) {
+		    $res = $response->data;
+		    echo "<pre>";
+		    var_export($res);
+		}
 	}
 }

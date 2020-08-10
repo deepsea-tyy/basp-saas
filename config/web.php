@@ -6,11 +6,26 @@ $modules = require __DIR__ . '/modules.php';
 $route = require __DIR__ . '/route.php';
 $translations = require __DIR__ . '/translations.php';
 
+use yii\web\Response;
+
 $config = [
 	'id' => 'bricksasp',
 	'basePath' => dirname(__DIR__),
 	'language' => 'zh-CN',
-	'bootstrap' => ['log'],
+	'bootstrap' => [
+		'log',
+		/*[
+            'class' => 'yii\filters\ContentNegotiator',
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+                'application/xml' => Response::FORMAT_XML,
+            ],
+            'languages' => [
+                'en',
+                'zh',
+            ],
+        ],*/
+	],
 	'aliases' => [
 		'@bower' => '@vendor/bower-asset',
 		'@npm' => '@vendor/npm-asset',
@@ -71,7 +86,7 @@ $config = [
 
 			// 'username' => 'root',
 			// 'password' => '649909457@qq.com',
-			// 'dsn' => 'mysql:host=120.79.223.217;dbname=basp',
+			// 'dsn' => 'mysql:host=127.0.0.1;dbname=basp',
 
 			'charset' => 'utf8',
 			'tablePrefix' => 'basp_',
@@ -82,7 +97,7 @@ $config = [
 		],
 		'redis' => [ //token
             'class' => 'yii\redis\Connection',
-            'hostname' => '120.79.223.217',
+            'hostname' => '127.0.0.1',
             'port' => 6379,
             'database' => 0,
 			'password' => '649909457@qq.com',
@@ -99,7 +114,7 @@ $config = [
 			// 'class' => 'yii\caching\FileCache',
 			'class' => 'yii\redis\Cache',
             'redis' => [
-	            'hostname' => '120.79.223.217',
+	            'hostname' => '127.0.0.1',
 	            'port' => 6379,
 	            'database' => 1,
 				'password' => '649909457@qq.com',

@@ -33,4 +33,7 @@ return [
         'promotion' => [
             'class' => 'bricksasp\promotion\Module',
         ],
+        'rest' => [
+            'class' => 'app\modules\rest\Module',
+        ],
     ];

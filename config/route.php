@@ -11,5 +11,13 @@ return [
             'user/captcha'  => 'rbac/user/captcha',
             'user/qrlogin'  => 'rbac/user/qrlogin',
             'user/qrscan'   => 'rbac/user/qrscan',
+            /*[
+                'class' => 'yii\rest\UrlRule',
+                'pluralize' =>false,
+                'controller' => 'rest/article',
+                'extraPatterns' => [
+                    'GET search' => 'search',
+                ],
+            ]*/
         ],
     ];
